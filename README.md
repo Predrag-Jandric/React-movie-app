@@ -1,3 +1,1 @@
-# Project abandoned
-
-#### Created only static part
+# in progress
