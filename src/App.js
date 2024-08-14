@@ -139,7 +139,10 @@ export default function App() {
           ) : (
             <>
               <WatchedSummary watched={watched} />
-              <WatchedMovieList watched={watched} onDeleteWatched={handleDeteleWatched} />
+              <WatchedMovieList
+                watched={watched}
+                onDeleteWatched={handleDeteleWatched}
+              />
             </>
           )}
         </Box>
@@ -293,6 +296,18 @@ function MovieDetails({ selectedId, onCloseMovie, onAddWatched, watched }) {
     [selectedId]
   );
 
+  useEffect(
+    function () {
+      if (!title) return;
+      document.title = `Movie: ${title}`;
+
+      return () => {
+        document.title = "Movie app usePopcorn";
+      };
+    },
+    [title]
+  );
+
   return (
     <>
       <div className="details">
@@ -389,7 +404,11 @@ function WatchedMovieList({ watched, onDeleteWatched }) {
   return (
     <ul className="list">
       {watched.map((movie) => (
-        <WatchedMovie key={movie.imdbID} movie={movie} onDeleteWatched={onDeleteWatched} />
+        <WatchedMovie
+          key={movie.imdbID}
+          movie={movie}
+          onDeleteWatched={onDeleteWatched}
+        />
       ))}
     </ul>
   );
@@ -414,7 +433,12 @@ function WatchedMovie({ movie, onDeleteWatched }) {
           <span>{movie.runtime} min</span>
         </p>
 
-        <button className="btn-delete" onClick={()=> onDeleteWatched(movie.imdbID)}>x</button>
+        <button
+          className="btn-delete"
+          onClick={() => onDeleteWatched(movie.imdbID)}
+        >
+          x
+        </button>
       </div>
     </li>
   );
