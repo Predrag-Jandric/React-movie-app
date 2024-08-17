@@ -4,7 +4,6 @@ import useMovies from "./useMovies";
 import useLocalStorageState from "./useLocalStorageState";
 import useKey from "./useKey";
 // components
-import Logo from "./components/navbar/Logo";
 import NumResults from "./components/navbar/NumResults";
 import Search from "./components/navbar/Search";
 import NavBar from "./components/navbar/Navbar";
