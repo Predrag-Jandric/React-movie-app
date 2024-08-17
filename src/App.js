@@ -3,6 +3,11 @@ import StarRating from "./StarRating";
 import useMovies from "./useMovies";
 import useLocalStorageState from "./useLocalStorageState";
 import useKey from "./useKey";
+// components
+import Logo from "./components/navbar/Logo";
+import NumResults from "./components/navbar/NumResults";
+import Search from "./components/navbar/Search";
+import NavBar from "./components/navbar/Navbar";
 
 const average = (arr) =>
   arr.reduce((acc, cur, i, arr) => acc + cur / arr.length, 0);
@@ -90,53 +95,6 @@ function ErrorMessage({ message }) {
     <p className="error">
       <span>{message}</span>
     </p>
-  );
-}
-
-function NavBar({ children }) {
-  return (
-    <nav className="nav-bar">
-      <Logo />
-      {children}
-    </nav>
-  );
-}
-
-function Logo() {
-  return (
-    <div className="logo">
-      <span role="img">🍿</span>
-      <h1>usePopcorn</h1>
-    </div>
-  );
-}
-
-function NumResults({ movies }) {
-  return (
-    <p className="num-results">
-      Found <strong>{movies.length}</strong> results
-    </p>
-  );
-}
-
-function Search({ query, setQuery }) {
-  const inputEl = useRef(null);
-
-  useKey("Enter", function () {
-    if (document.activeElement === inputEl.current) return;
-    inputEl.current.focus();
-    setQuery("");
-  });
-
-  return (
-    <input
-      className="search"
-      type="text"
-      placeholder="Search movies..."
-      value={query}
-      onChange={(e) => setQuery(e.target.value)}
-      ref={inputEl}
-    />
   );
 }
 
